@@ -1,0 +1,14 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+#### Below is an example of how to rebuild JS and PY assets if JSON assets have changed.
+# SRC_PATTERN="\.json$"
+# if git diff --cached --name-only | grep --quiet -E "$SRC_PATTERN"
+# then
+#   echo "JSON assets changed. Running build scripts."
+#   echo "Re-building JS and PY assets using JS script."
+#   npm run build:js-and-python-modules
+# fi
+
+# Automatically lint staged files in pre-commit hook
+npx lint-staged
