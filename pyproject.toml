@@ -1,7 +1,7 @@
 [project]
-name = "mat3ra-templator"
+name = "mat3ra-parsers"
 dynamic = ["version"]
-description = "A template for Python projects."
+description = "Parsers."
 readme = "README.md"
 requires-python = ">=3.8"
 license = {file = "LICENSE.md"}
@@ -29,7 +29,7 @@ tests = [
     "mypy",
     "pip-tools"
 ]
-all = ["mat3ra-templator[tests]"]
+all = ["mat3ra-parsers[tests]"]
 
 # Entrypoint scripts can be defined here, see examples below.
 [project.scripts]

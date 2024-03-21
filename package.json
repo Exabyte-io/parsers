@@ -1,7 +1,7 @@
 {
-    "name": "@mat3ra/templator",
+    "name": "@mat3ra/parsers",
     "version": "0.0.0",
-    "description": "Template Py JS",
+    "description": "Parsers Py JS",
     "author": "Exabyte Inc.",
     "license": "ISC",
     "main": "lib/index.js",
