@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
     /* Basic Options */
-    "target": "es2018",
+    "target": "es2019",
     "module": "esNext",
     "allowJs": true,
     "jsx": "react",
     "incremental": true,
     "noEmit": true,
-    "outDir": "./lib",
+    "outDir": "./dist",
 
     /* Strict Type-Checking Options */
     "strict": true,

@@ -1,18 +1,18 @@
 {
     "name": "@mat3ra/parsers",
     "version": "0.0.0",
-    "description": "Parsers Py JS",
+    "description": "Parsers Py/JS",
     "author": "Exabyte Inc.",
     "license": "ISC",
-    "main": "lib/index.js",
+    "main": "dist/index.js",
     "files": [
-        "/lib",
+        "/dist",
         "/src/js",
         "tsconfig.json"
     ],
     "dependencies": {
         "@babel/cli": "7.16.0",
-        "@babel/core": "7.16.0",
+        "@babel/core": "7.24.1",
         "@babel/eslint-parser": "7.16.3",
         "@babel/plugin-proposal-class-properties": "7.16.0",
         "@babel/preset-env": "7.16.4",
@@ -42,11 +42,11 @@
         "eslint-plugin-prettier": "^4.2.1",
         "eslint-plugin-react": "7.30.0",
         "eslint-plugin-simple-import-sort": "7.0.0",
+        "husky": "^7.0.4",
         "lint-staged": "^12.1.2",
-        "mocha": "^9.1.3",
+        "mocha": "10.3.0",
         "nyc": "^15.1.0",
-        "prettier": "^2.7.1",
-        "husky": "^7.0.4"
+        "prettier": "^2.7.1"
     },
     "scripts": {
         "lint": "eslint --cache src/js tests/js && prettier --write src/js tests/js",
@@ -59,7 +59,7 @@
         "transpile": "tsc"
     },
     "engines": {
-        "node": ">=12.0.0"
+        "node": ">=14.0.0"
     },
     "lint-staged": {
         "*.{js,ts,tsx}": "eslint --cache --fix",
