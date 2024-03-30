@@ -27,3 +27,36 @@ class BaseParser(mixins.RoundNumericValuesMixin):
         """
         content = utils.get_file_content(file_path)
         return BaseParser(content, format=format, version=version)
+
+    def parse(self):
+        """
+        Parse the content.
+
+        Returns:
+            dict
+        """
+        return {
+            "content": self.content,
+            "version": self.version,
+        }
+
+    def to_dict(self):
+        """
+        Returns a dictionary representation of the parser.
+
+        Returns:
+            dict
+        """
+        return {
+            "content": self.content,
+            "version": self.version,
+        }
+
+    def to_json(self):
+        """
+        Returns a JSON representation of the parser.
+
+        Returns:
+            str
+        """
+        return str(self.to_dict())
