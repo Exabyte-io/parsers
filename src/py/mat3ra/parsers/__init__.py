@@ -1,5 +1,5 @@
-from mat3ra.utils import mixins
 from mat3ra.utils import file as utils
+from mat3ra.utils import mixins
 
 
 class BaseParser(mixins.RoundNumericValuesMixin):
@@ -7,13 +7,20 @@ class BaseParser(mixins.RoundNumericValuesMixin):
     Base Parser class.
     """
 
-    def __init__(self, content, format: str = None, version: str = None):
+    PRECISION_MAP = {
+        # decimal places
+        "coordinates_crystal": 9,
+        "coordinates_cartesian": 6,
+        "angles": 4,
+    }
+
+    def __init__(self, content, format: str = "", version: str = ""):
         self.content = content
         self.format = format
         self.version = version
 
     @staticmethod
-    def from_file(file_path: str, format: str = None, version: str = None):
+    def from_file(file_path: str, format: str = "", version: str = ""):
         """
         Returns a parser instance from a file.
 

@@ -17,20 +17,27 @@ classifiers = [
 dependencies = [
     # add requirements here
     "numpy",
-    # "../utils",
+    "mat3ra-utils",
+    "mat3ra-regex",
+    "mat3ra-fixtures",
+    "pymatgen",
 ]
 
 [project.optional-dependencies]
-tests = [
-    "coverage[toml]>=5.3",
+dev = [
     "pre-commit",
     "black",
     "ruff",
     "isort",
     "mypy",
-    "pip-tools"
 ]
-all = ["mat3ra-parsers[tests]"]
+tests = [
+    "coverage[toml]>=5.3",
+    "pip-tools",
+    "pytest",
+    "pytest-cov",
+]
+all = ["mat3ra-parsers[dev,tests]"]
 
 # Entrypoint scripts can be defined here, see examples below.
 [project.scripts]

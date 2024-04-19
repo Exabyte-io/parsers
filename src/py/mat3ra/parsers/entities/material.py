@@ -31,12 +31,11 @@ class MaterialParser(BaseParser):
 
     @property
     def lattice(self):
-        return self.pre_parser.lattice_bravais
+        return self.pre_parser.lattice
 
     @property
     def name(self):
         return self.pre_parser.name
-
 
     def _serialize(self):
         """
