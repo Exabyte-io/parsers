@@ -1,4 +1,5 @@
 import re
+
 from mat3ra.parsers import BaseParser
 from mat3ra.regex.data.schemas import SCHEMAS
 from mat3ra.utils import object as object_utils
@@ -31,9 +32,7 @@ class EspressoPwxStdinParser(BaseParser):
 
     @staticmethod
     def get_value_from_namelist_by_key(namelist_content: str, namelist_name: str, key: str):
-        regex_object = object_utils.get(
-            SCHEMAS, EspressoPwxStdinParser.schema_path + f"{namelist_name}/{key}"
-        )
+        regex_object = object_utils.get(SCHEMAS, EspressoPwxStdinParser.schema_path + f"{namelist_name}/{key}")
         regex = re.compile(
             regex_object["regex"],
             regex_utils.convert_js_flags_to_python(regex_object["flags"]),

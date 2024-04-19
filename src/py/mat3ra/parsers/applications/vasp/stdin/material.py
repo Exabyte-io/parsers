@@ -1,11 +1,11 @@
 from pymatgen.analysis.structure_analyzer import SpacegroupAnalyzer
+
 from .parser import VASPStdinParser
 
 _ = VASPStdinParser.round_array_or_number
 
 
 class VASPStdinMaterialParser(VASPStdinParser):
-
     def lattice_vectors(self):
         """
         Returns lattice vectors.

@@ -3,7 +3,6 @@ from pymatgen.core.structure import Structure
 
 
 class VASPStdinParser(BaseParser):
-
     def __init__(self, content, version: str = "5.3.5"):
         """
         Constructor.
