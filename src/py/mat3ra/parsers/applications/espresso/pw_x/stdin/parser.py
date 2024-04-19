@@ -52,7 +52,7 @@ class EspressoPwxStdinParser(BaseParser):
         control_blocks_match = control_block_regex.match(self.content)
         control_block = control_blocks_match[0] if control_blocks_match else None
 
-        _ = lambda x: self.get_value_from_namelist_by_key(control_block, "control", x)[1]
+        _ = lambda x: self.get_value_from_namelist_by_key(control_block, "control", x)[1]  # noqa
 
         return {
             "calculation": _("calculation"),
