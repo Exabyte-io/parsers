@@ -99,23 +99,26 @@ class EspressoPwxStdinMaterial(EspressoPwxStdinParser):
             if units == "alat" and self.celldm1_angstrom:
                 matrix = [[val * self.celldm1_angstrom for val in row] for row in matrix]
 
+            # For ibrav=0, explicitly calculate parameters FROM the given vectors
             domain_lattice = Lattice.from_vectors_array(matrix)
+            lattice_type = domain_lattice.type.value if hasattr(domain_lattice.type, 'value') else domain_lattice.type
+            a, b, c = domain_lattice.a, domain_lattice.b, domain_lattice.c
+            alpha, beta, gamma = domain_lattice.alpha, domain_lattice.beta, domain_lattice.gamma
+            vectors = domain_lattice.vector_arrays_rounded
 
         else:
+            # For ibrav>0, use made's primitive cell generator to build FCC/BCC vectors
             lattice_type, a, b, c, alpha, beta, gamma, cell = self._get_cell_from_ibrav(system)
-
-            domain_lattice = Lattice(type=lattice_type, a=a, b=b, c=c, alpha=alpha, beta=beta, gamma=gamma)
-
-        vectors = domain_lattice.vector_arrays_rounded
+            vectors = cell.vector_arrays_rounded
 
         return {
-            "type": domain_lattice.type.value if hasattr(domain_lattice.type, "value") else domain_lattice.type,
-            "a": domain_lattice.round_array_or_number(domain_lattice.a, 6),
-            "b": domain_lattice.round_array_or_number(domain_lattice.b, 6),
-            "c": domain_lattice.round_array_or_number(domain_lattice.c, 6),
-            "alpha": domain_lattice.round_array_or_number(domain_lattice.alpha, 4),
-            "beta": domain_lattice.round_array_or_number(domain_lattice.beta, 4),
-            "gamma": domain_lattice.round_array_or_number(domain_lattice.gamma, 4),
+            "type": lattice_type,
+            "a": self._round(float(a), 6),
+            "b": self._round(float(b), 6),
+            "c": self._round(float(c), 6),
+            "alpha": self._round(float(alpha), 4),
+            "beta": self._round(float(beta), 4),
+            "gamma": self._round(float(gamma), 4),
             "units": {"length": "angstrom", "angle": "degree"},
             "vectors": {
                 "a": vectors[0],
