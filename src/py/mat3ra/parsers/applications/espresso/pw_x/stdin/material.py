@@ -37,11 +37,6 @@ class EspressoPwxStdinMaterial(EspressoPwxStdinParser):
     Translates Espresso PWX stdin syntax intermediate configs into MADE material domain configs.
     """
 
-    def _round(self, values, precision=6):
-        if isinstance(values, list):
-            return [round(v, precision) for v in values]
-        return round(values, precision)
-
     def _get_cell_from_ibrav(self, system: dict) -> Tuple[str, float, float, float, float, float, float, Cell]:
         """
         Parses system parameters and uses `made` to calculate the 3x3 primitive matrix.
@@ -113,12 +108,12 @@ class EspressoPwxStdinMaterial(EspressoPwxStdinParser):
 
         return {
             "type": lattice_type,
-            "a": self._round(float(a), 6),
-            "b": self._round(float(b), 6),
-            "c": self._round(float(c), 6),
-            "alpha": self._round(float(alpha), 4),
-            "beta": self._round(float(beta), 4),
-            "gamma": self._round(float(gamma), 4),
+            "a": self.round_array_or_number(float(a), self.PRECISION_MAP["coordinates_cartesian"]),
+            "b": self.round_array_or_number(float(b), self.PRECISION_MAP["coordinates_cartesian"]),
+            "c": self.round_array_or_number(float(c), self.PRECISION_MAP["coordinates_cartesian"]),
+            "alpha": self.round_array_or_number(float(alpha), self.PRECISION_MAP["angles"]),
+            "beta": self.round_array_or_number(float(beta), self.PRECISION_MAP["angles"]),
+            "gamma": self.round_array_or_number(float(gamma), self.PRECISION_MAP["angles"]),
             "units": {"length": "angstrom", "angle": "degree"},
             "vectors": {
                 "a": vectors[0],
@@ -151,7 +146,9 @@ class EspressoPwxStdinMaterial(EspressoPwxStdinParser):
             else:
                 units = "crystal"
 
-            coordinates.append({"id": i, "value": self._round(coords, 6)})
+            # Determine precision based on coordinate units
+            precision = self.PRECISION_MAP["coordinates_crystal"] if units == "crystal" else self.PRECISION_MAP["coordinates_cartesian"]
+            coordinates.append({"id": i, "value": self.round_array_or_number(coords, precision)})
 
         return {"units": units, "elements": elements, "coordinates": coordinates}
 
