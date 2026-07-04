@@ -183,3 +183,22 @@ class EspressoPwxStdinMaterial(EspressoPwxStdinParser):
         # Greatest Common Divisor to reduce the formula
         divisor = reduce(math.gcd, counts.values())
         return "".join([f"{el}{count//divisor}" if count // divisor > 1 else el for el, count in counts.items()])
+
+    def parse(self) -> dict:
+        """
+        Parses the material configuration.
+
+        Returns:
+            dict: A dictionary containing the parsed material properties
+                  according to the ESSE schema and the application parser version.
+        """
+        return {
+            "content": {
+                "name": self.name,
+                "formula": self.name,
+                "unitCellFormula": self.formula,
+                "lattice": self.lattice,
+                "basis": self.basis,
+            },
+            "version": self.version,
+        }
