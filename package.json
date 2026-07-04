@@ -24,11 +24,11 @@
         "typescript": "^5.9.3"
     },
     "devDependencies": {
-        "@exabyte-io/eslint-config": "git+https://github.com/Exabyte-io/eslint-config.git#7b126d943ffd89c649a72d8067ee03c413564b82",
+        "@exabyte-io/eslint-config": "^2026.7.3-0",
         "@mat3ra/tsconfig": "^2024.6.3-0",
         "@types/chai": "^4.3.20",
         "@types/mocha": "^10.0.10",
-        "@types/node": "^20.19.41",
+        "@types/node": "^20.19.43",
         "@typescript-eslint/eslint-plugin": "^5.62.0",
         "@typescript-eslint/parser": "^5.62.0",
         "babel-eslint": "^10.1.0",

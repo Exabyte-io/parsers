@@ -15,12 +15,11 @@ classifiers = [
     "Topic :: Software Development",
 ]
 dependencies = [
-    # add requirements here
-    "numpy",
     "mat3ra-esse>=2026.6.30.post0",
-    "mat3ra-made @ git+https://github.com/mat3ra/made.git@9eb2f5c4c426e2e6f8ce75ea06b003799aa4f620",
-    "mat3ra-regex @ git+https://github.com/mat3ra/regex.git@8124db7e9582c5ba435489b21613c18b0fd42145",
     "mat3ra-fixtures",
+    "mat3ra-made>=2026.7.4.post0",
+    "mat3ra-regex>=2026.7.4.post0",
+    "numpy",
     "pymatgen",
 ]
 
