@@ -11,4 +11,7 @@ class ParserFactory(factory.BaseFactory):
             "mat3ra.parsers.applications.espresso.pw_x.stdin.parser.EspressoPwxStdinParser"
         ),
         "applications.vasp.stdin": "mat3ra.parsers.applications.vasp.VASPStdinParser",
+        "applications.lmc.deposition": (
+            "mat3ra.parsers.applications.lmc.deposition.process.LmcDepositionProcess"
+        ),
     }
